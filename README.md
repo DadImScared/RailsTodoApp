@@ -1,40 +1,40 @@
 ## Todo list
 
-a todo list app made with ruby on rails
+A todo list app made with Ruby on Rails
 
 ### Installation:
-the following is required:
-* Ruby language version 2.2.2 or newer
-* Right version of Development Kit, if you are using Windows.
-* The RubyGems packaging system, which is installed with Ruby by default.
-* A working installation of the SQLite3 Database.
-* Rails 5 or greater
+The following is required:
+* Ruby 2.2.2+
+* Ruby DevKit (If on Windows)
+* RubyGems
+* SQLite3
+* Rails 5+
 
-run
+Run
 ```
 bundle install
 ```
 
 ### Run the project locally:
 
-in the config directory create an application.yml
+In the config directory create an application.yml
 and enter the following key/value pairs:
 * EMAIL_USERNAME: some value
 * EMAIL_PASSWORD: another value
 * MAIL_HOST: example: localhost:3000
 * MAIL_ADDRESS: example: smtp.gmail.com
 
-create database
+Create database
 ```
 rails db:migrate
 ```
 
-start server
+Start server
 ```
 rails server
 ```
 
-run tests
+Run tests
 ```
 rails test
 ```
