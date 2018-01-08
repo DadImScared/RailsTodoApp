@@ -1,0 +1,27 @@
+
+<%= form_with model: @todo_list, local: true do |form| %>
+
+  <% if @todo_list.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <button type="button"
+              class="close"
+              data-dismiss="alert">x</button>
+      <h4>
+        <%= pluralize(@todo_list.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h4>
+      <ul>
+        <% @todo_list.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <%= form.submit "Submit", class: 'btn btn-primary' %>
+<% end %>

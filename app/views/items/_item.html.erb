@@ -1,0 +1,30 @@
+<li class="list-group-item d-flex flex-wrap justify-content-between">
+  <div class="item-title align-self-center">
+
+    <% if item.is_done %>
+      <s><%= item.title %></s>
+    <% else %>
+      <%= item.title %>
+    <% end %>
+  </div>
+
+  <div class="btn-group btn-group-sm" role="group">
+    <%= link_to "#{item.is_done ? 'mark un done':'mark as done'}",
+                todo_list_item_path(item.todo_list, item),
+                data: {
+                    method: :patch,
+                    remote: true,
+                    params: { item: { is_done: !item.is_done } }.to_param
+                },
+                class: "btn btn-primary"
+    %>
+
+    <%= link_to 'Delete item',
+                [item.todo_list, item],
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "btn btn-danger"
+    %>
+  </div>
+
+</li>

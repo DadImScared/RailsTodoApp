@@ -1,0 +1,8 @@
+<%= form_with(model: [ @todo_list, @todo_list.items.build ], class: 'my-form') do |form| %>
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Add item', class: 'btn btn-primary' %>
+<% end %>

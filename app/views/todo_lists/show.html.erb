@@ -1,0 +1,34 @@
+
+<div class="w-100 bottom-border d-flex justify-content-start">
+  <div class="p-2 right-border">
+    <%= render 'layouts/back_link_todos' %>
+  </div>
+  <span class="mx-lg-auto ml-auto p-2">
+    <%= @todo_list.title %>
+  </span>
+</div>
+
+<h3>Add an item:</h3>
+<%= render 'items/form' %>
+
+<h2>Items</h2>
+<ul class="list-group">
+  <%= render @todo_list.items.order(:is_done) %>
+</ul>
+
+<script>
+  $(document).ready(function() {
+      $('form').submit(function() {
+          $('form div.form-group input').removeClass('is-invalid');
+          $('form div.form-group div.invalid-feedback').remove();
+      });
+      $('form.my-form').on("ajax:success").on("ajax:error", function(e) {
+          // access the error message and xhr and status from event.detail
+          console.log();
+          $('form div.form-group').append('<div class="invalid-feedback">\n' +
+             'Title ' + e.detail[0].errors.title.join(',') + '          \n' +
+              '        </div>');
+          $('form div.form-group input').addClass('is-invalid');
+      })
+  })
+</script>

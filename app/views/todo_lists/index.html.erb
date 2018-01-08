@@ -1,0 +1,26 @@
+<h1>Todo lists</h1>
+
+<div>
+  <%= link_to 'Create a new list', new_todo_list_path %>
+</div>
+
+<ul class='list-group'>
+  <% @todo_lists.each do |todo| %>
+    <li class='list-group-item d-flex justify-content-between flex-wrap'>
+      <span class="todo-title align-self-center">
+        name: <%= link_to "#{todo.title}", todo_list_path(todo) %>
+      </span>
+      <span class="todo-item-count align-self-center">
+        items: <%= todo.items.count %>
+      </span>
+      <div class="btn-group btn-group-sm">
+        <%= link_to 'Edit todo', edit_todo_list_path(todo), class: 'btn btn-primary' %>
+        <%= link_to 'Delete todo',
+                    todo_list_path(todo),
+                    method: :delete,
+                    class: 'btn btn-danger',
+                    data: { confirm: 'Are you sure?' }%>
+      </div>
+    </li>
+  <% end %>
+</ul>
